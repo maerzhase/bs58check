@@ -5,4 +5,11 @@ import bs58checkBase from './base.js';
 function sha256x2(buffer) {
     return sha256(sha256(buffer));
 }
-export default bs58checkBase(sha256x2);
+// Create the bs58check instance
+var bs58check = bs58checkBase(sha256x2);
+// Export the methods as named exports
+export var encode = bs58check.encode;
+export var decode = bs58check.decode;
+export var decodeUnsafe = bs58check.decodeUnsafe;
+// Also export the default
+export default bs58check;
